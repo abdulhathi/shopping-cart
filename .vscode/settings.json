@@ -1,0 +1,6 @@
+{
+    "editor.fontFamily": "Operator Mono Lig, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Snazzy Operator",
+    "explorer.compactFolders": false,
+}
