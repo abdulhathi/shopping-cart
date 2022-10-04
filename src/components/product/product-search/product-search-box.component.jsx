@@ -1,17 +1,15 @@
 import { Component } from "react";
+import './product-search-box.styles.css'
 
 class ProductSearchBox extends Component { 
-    onSearchChange = (event) => { 
-        console.log(event.target.value)
-    }
     render() { 
-        const { onSearchChange } = this
-        const { products } = this.props
         return (
             <div>
-                <input className="search-box"
-                    type='search' placeholder='Search product'
-                    onChange={onSearchChange}
+                <input
+                    className={`search-box ${this.props.className}`}
+                    type='search'
+                    placeholder={this.props.placeholder}
+                    onChange={this.props.onChangeHandler}
                 ></input>
             </div>
         )

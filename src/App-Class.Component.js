@@ -1,10 +1,9 @@
 import { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ProductList from './components/product/product-list/product-list.component';
 import ProductSearchBox from './components/product/product-search/product-search-box.component';
 
-class App extends Component {
+class AppClassComponent extends Component {
   constructor() { 
     super();
 
@@ -22,16 +21,30 @@ class App extends Component {
         return {products: products.products}
       }))
   }
+  onSearchChange = (event) => { 
+    const searchValue = event.target.value.toLocaleLowerCase()
+    this.setState(() => { return {searchValue} })
+  }
+
   render() {
     const { products, searchValue } = this.state
-    
+    const { onSearchChange } = this
+
+    const filteredProducts = products.filter((product) => { 
+      return product.title.toLocaleLowerCase().includes(searchValue)
+    })
+
     return (
       <div className="App">
-        <ProductSearchBox products={ products } />
-        <ProductList products={products} />
+        <h1>Shopping Cart</h1>
+        <ProductSearchBox
+          onChangeHandler={onSearchChange}
+          className="product-search-box"
+          placeholder='Search product' />
+        <ProductList products={filteredProducts} />
       </div>
     );
   }
 }
 
-export default App;
+export default AppClassComponent;
